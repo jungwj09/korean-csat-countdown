@@ -38,10 +38,12 @@ export default function App() {
     <>
       <div className="clock-container">
         <YearSelector selectedYear={selectedYear} onChange={changeYear} />
-        <h1 className="clock-title">
-          {team}<br className="title-break" />{rest}
-        </h1>
-        <p className="clock-subtitle">{TARGET_LABEL(targetDate)}</p>
+        <div className="clock-title-group">
+          <h1 className="clock-title">
+            {team}<br className="title-break" />{rest}
+          </h1>
+          <p className="clock-subtitle">{TARGET_LABEL(targetDate)}</p>
+        </div>
         <CountdownClock timeLeft={timeLeft} />
         <MotivationMessage />
         {isFinished && <h2>수능이 시작되었습니다.</h2>}
