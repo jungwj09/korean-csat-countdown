@@ -1,0 +1,43 @@
+.year-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.year-chip {
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  padding: 0.35em 1em;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background-color 0.18s, color 0.18s, border-color 0.18s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-width: 3.2rem;
+}
+
+.year-chip:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.year-chip.active {
+  background-color: rgba(255, 255, 255, 0.92);
+  color: #242424;
+  border-color: transparent;
+}
+
+@media screen and (max-width: 660px) {
+  .year-chip {
+    font-size: 0.88rem;
+    padding: 0.3em 0.85em;
+    min-width: 2.8rem;
+  }
+}

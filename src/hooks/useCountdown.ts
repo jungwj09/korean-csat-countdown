@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { TARGET_DATE } from "../constants/targetDate";
 
 export interface TimeLeft {
   days: number;
@@ -9,8 +8,8 @@ export interface TimeLeft {
   milliseconds: number;
 }
 
-const calculateTimeLeft = (): TimeLeft => {
-  const difference = TARGET_DATE.getTime() - new Date().getTime();
+const calculateTimeLeft = (targetDate: Date): TimeLeft => {
+  const difference = targetDate.getTime() - new Date().getTime();
   if (difference <= 0) {
     return { days: 0, hours: 0, minutes: 0, seconds: 0, milliseconds: 0 };
   }
@@ -23,20 +22,20 @@ const calculateTimeLeft = (): TimeLeft => {
   };
 };
 
-export const useCountdown = () => {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+export const useCountdown = (targetDate: Date) => {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft(targetDate));
   const [isFinished, setIsFinished] = useState<boolean>(
-    TARGET_DATE.getTime() - new Date().getTime() <= 0
+    targetDate.getTime() - new Date().getTime() <= 0
   );
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const diff = TARGET_DATE.getTime() - new Date().getTime();
-      setTimeLeft(calculateTimeLeft());
+      const diff = targetDate.getTime() - new Date().getTime();
+      setTimeLeft(calculateTimeLeft(targetDate));
       setIsFinished(diff <= 0);
     }, 10);
     return () => clearInterval(timer);
-  }, []);
+  }, [targetDate]);
 
   return { timeLeft, isFinished };
 };
