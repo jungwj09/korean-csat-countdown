@@ -12,7 +12,7 @@ export function getCsatYear(birthYear: number): number {
   return birthYear + 18;
 }
 
-export const BIRTH_YEARS = [8, 9, 10, 11, 12, 13, 14] as const;
+export const BIRTH_YEARS = [8, 9, 10, 11, 12, 13, 14, 15] as const;
 export type BirthYear = typeof BIRTH_YEARS[number];
 
 function getSubjectParticle(n: number): string {
